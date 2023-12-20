@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+
+<div class="m-3">
+    <h2>Search Results</h2>
+    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+        <!-- Card-->
+        <div class="card rounded shadow-sm border-0">
+            {% if product %}
+            {% for product in product %}
+          <div class="card-body p-4"><a href="{% url 'product-detail' product.id %}"><img src="{{product.product_image_frontside.url}}" alt="" class="img-fluid d-block mx-auto mb-3"></a>
+            <h5> <a href="#" class="text-dark">{{product.title}}</a></h5>
+            <p class="small text-muted font-italic">{{product.discount_price}}</p>
+            <ul class="list-inline small">
+              <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+              <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+              <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            </ul>
+          </div>
+          {% endfor %}
+          {% else %}
+          <p>The Product that you Search is not available</p>
+          {% endif %}
+        </div>
+      </div>
+
+{% endblock %} 

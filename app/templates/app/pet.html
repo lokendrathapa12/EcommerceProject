@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+
+   <div class="row">
+    <h2>Pet Suppliers</h2>
+    {% for p in pet %}
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <a href="{% url 'product-detail' p.id %}"><img src="{{p.product_image_frontside.url}}" class="card-img-top" alt="{{ p.title }}"></a><h5 class="card-title mx-auto">{{ p.title }}</h5>
+                <div class="card-body">
+                    <p class="card-text">RS. {{ p.discount_price }}</p>
+                    <p class="card-text">Upload At: {{ p.upload_date }}</p>
+                    <!-- Add other product details as needed -->
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 and not forloop.last %}
+            </div><div class="row">
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %} 

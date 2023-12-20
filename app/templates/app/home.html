@@ -4,7 +4,7 @@
 
 {% block banner_slider %}
 <!--Banner Slider-->
- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+ <!--<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="{% static 'app/images/banner/b1.jpg' %}" class="d-block w-100" alt="..."> 
@@ -27,7 +27,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </a>
-</div>
+</div>-->
 <!-- End Banner Slider -->
 {% endblock banner_slider %}
 
@@ -45,19 +45,10 @@
 
 {% block main-content %}
 <!-- 1st Product Slider -->
-<div class="m-3">
- <h2>Top Wear</h2>
- <!-- Slider 1 -->
- <div class="owl-carousel" id="slider1">
-  {% for t in topwear %}
-  <a href="{% url 'product-detail' t.id %}" class="btn"><div class="item"><img src="{{t.product_image.url}}"" alt="" height="200px"><span class="fw-bold">{{t.title}}</span><br><span class="fs-5">Rs.{{t.discount_price}}</span></div></a>
-  {% endfor %}
- </div>
-</div>
 <!-- End 1st Product Slider -->
 
 <!-- Payment Info Section -->
-<div class="container my-5">
+<!--<div class="container my-5">
  <div class="row">
   <div class="col-sm-3">
    <div class="card mb-3">
@@ -88,37 +79,388 @@
    </div>
   </div>
  </div>
-</div>
+</div>-->
 <!-- End Payment Info Section -->
 
 <!-- 2nd Product Slider -->
-<div class="m-3">
-  <h2>Bottom Wear</h2>
-  <!-- Slider 1 -->
-  <div class="owl-carousel" id="slider2">
-   {% for b in bottomwear %}
-   <a href="{% url 'product-detail' b.id %}" class="btn"><div class="item"><img src="{{b.product_image.url}}"" alt="" height="200px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5">Rs.{{b.discount_price}}</span></div></a>
-   {% endfor %}
-  </div>
- </div>
- <div class="m-3">
-  <h2>Mobile</h2>
-  <!-- Slider 1 -->
-  <div class="owl-carousel" id="slider3">
-   {% for m in mobile %}
-   <a href="{% url 'product-detail' m.id %}" class="btn"><div class="item"><img src="{{m.product_image.url}}"" alt="" height="200px"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs.{{m.discount_price}}</span></div></a>
-   {% endfor %}
-  </div>
- </div>
- <div class="m-3">
-  <h2>Laptop</h2>
-  <!-- Slider 1 -->
-  <div class="owl-carousel" id="slider3">
-   {% for l in laptop %}
-   <a href="{% url 'product-detail' l.id %}" class="btn"><div class="item"><img src="{{l.product_image.url}}"" alt="" height="200px"><span class="fw-bold">{{l.title}}</span><br><span class="fs-5">Rs.{{l.discount_price}}</span></div></a>
-   {% endfor %}
-  </div>
- </div>
+<div class="row">
+  <h2>Tools And Equipment</h2>
+  {% for t in tools %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' t.id %}"><img src="{{t.product_image_frontside.url}} " class="card-img-top" alt="{{ t.title }}"></a><h5 class="card-title mx-auto">{{ t.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ t.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ t.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Office Furniture</h2>
+  {% for f in furniture %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' f.id %}"><img src="{{f.product_image_frontside.url}}" class="card-img-top" alt="{{ f.title }}" ></a><h5 class="card-title mx-auto">{{ f.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ f.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ f.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+ <div class="row">
+  <h2>Art And Craft</h2>
+  {% for art in art %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' art.id %}"><img src="{{art.product_image_frontside.url}}" class="card-img-top" alt="{{ art.title }}"></a><h5 class="card-title mx-auto">{{ art.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ art.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ art.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+ <div class="row">
+  <h2>Boys Fashion</h2>
+  {% for b in boys %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' b.id %}"><img src="{{b.product_image_frontside.url}}" class="card-img-top" alt="{{ b.title }}"></a><h5 class="card-title mx-auto">{{ b.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ b.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ b.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Girls Fashion</h2>
+  {% for g in girls %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' g.id %}"><img src="{{g.product_image_frontside.url}}" class="card-img-top" alt="{{ g.title }}"></a><h5 class="card-title mx-auto">{{ g.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ g.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ g.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Man Fashion</h2>
+  {% for m in man %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' m.id %}"><img src="{{m.product_image_frontside.url}}" class="card-img-top" alt="{{ m.title }}"></a><h5 class="card-title mx-auto">{{ m.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ m.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ m.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Woman Fashion</h2>
+  {% for w in woman %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' w.id %}"><img src="{{w.product_image_frontside.url}} " class="card-img-top" alt="{{ w.title }}"></a><h5 class="card-title mx-auto">{{ w.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ w.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ w.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>  
+<hr>
+
+<div class="row">
+  <h2>Baby Fashion</h2>
+  {% for b in baby %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' b.id %}"><img src="{{b.product_image_frontside.url}}" class="card-img-top" alt="{{ b.title }}"></a><h5 class="card-title mx-auto">{{ b.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ b.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ b.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Electronics</h2>
+  {% for e in electronics %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' e.id %}"><img src="{{e.product_image_frontside.url}}" class="card-img-top" alt="{{ e.title }}"></a><h5 class="card-title mx-auto">{{ e.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ e.discount_price }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Beauty And Personnal Care</h2>
+  {% for b in beauty %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' b.id %}"><img src="{{b.product_image_frontside.url}}" class="card-img-top" alt="{{ b.title }}"></a><h5 class="card-title mx-auto">{{ b.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ b.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ b.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+ 
+<div class="row">
+  <h2>Sports And Outdoors</h2>
+  {% for s in sport %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' s.id %}"><img src="{{s.product_image_frontside.url}} " class="card-img-top" alt="{{ s.title }}"></a><h5 class="card-title mx-auto">{{ s.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ s.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ s.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+
+<div class="row">
+  <h2>Toys And Games</h2>
+  {% for t in toys %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' t.id %}"><img src="{{t.product_image_frontside.url}} " class="card-img-top" alt="{{ t.title }}"></a><h5 class="card-title mx-auto">{{ t.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ t.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ t.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Book And Stationary</h2>
+  {% for b in books %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' b.id %}"><img src="{{b.product_image_frontside.url}}" class="card-img-top" alt="{{ b.title }}"></a><h5 class="card-title mx-auto">{{ b.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ b.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ b.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Pet Suppliers</h2>
+  {% for p in pet %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' p.id %}"><img src="{{p.product_image_frontside.url}}" class="card-img-top" alt="{{ p.title }}"></a><h5 class="card-title mx-auto">{{ p.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ p.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ p.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>>
+<hr>
+
+<div class="row">
+  <h2>Digtal Product</h2>
+  {% for d in digital %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' d.id %}"><img src="{{d.product_image_frontside.url}}" class="card-img-top" alt="{{ d.title }}"></a><h5 class="card-title mx-auto">{{ d.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ d.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ d.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>>
+<hr>
+
+<div class="row">
+  <h2>Food And Baverage</h2>
+  {% for f in food %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' f.id %}"><img src="{{f.product_image_frontside.url}}" class="card-img-top" alt="{{ f.title }}"></a><h5 class="card-title mx-auto">{{ f.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ f.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ f.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Automotive</h2>
+  {% for a in automotive %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' a.id %}"><img src="{{a.product_image_frontside.url}}" class="card-img-top" alt="{{ a.title }}"></a><h5 class="card-title mx-auto">{{ a.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ a.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ a.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Kitchen And Appliances</h2>
+  {% for k in kitchen %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' k.id %}"><img src="{{k.product_image_frontside.url}}" class="card-img-top" alt="{{ k.title }}"></a><h5 class="card-title mx-auto">{{ k.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ k.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ k.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
+<hr>
+
+<div class="row">
+  <h2>Gloceries</h2>
+  {% for g in groceries %}
+      <div class="col-md-3 mb-3">
+          <div class="card">
+              <a href="{% url 'product-detail' g.id %}"><img src="{{g.product_image_frontside.url}}" class="card-img-top" alt="{{ g.title }}"></a><h5 class="card-title mx-auto">{{ g.title }}</h5>
+              <div class="card-body">
+                  <p class="card-text">RS. {{ g.discount_price }}</p>
+                  <p class="card-text">Upload At: {{ g.upload_date }}</p>
+                  <!-- Add other product details as needed -->
+              </div>
+          </div>
+      </div>
+      {% if forloop.counter|divisibleby:4 and not forloop.last %}
+          </div><div class="row">
+      {% endif %}
+  {% endfor %}
+</div>
 <!-- End 2nd Product Slider -->
 {% endblock main-content %}
 

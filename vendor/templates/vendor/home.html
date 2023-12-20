@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home Page{% endblock title %}
+{% block main-content %}
+
+<!-- products/templates/products/product_list.html -->
+<div class="row">
+    <h2 class="display-6">{{request.user}} Uploaded Product</h2>
+    {% for product in product %}
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <a href="{% url 'product-detail' product.id %}"><img src="{{product.product_image_frontside.url}}" class="card-img-top" alt="{{ product.title }}"></a><h5 class="card-title">{{ product.title }}</h5>
+                <div class="card-body">
+                    <p class="card-text">RS. {{ product.discount_price }}</p>
+                    <p class="card-text">Upload At: {{ product.upload_date }}</p>
+                    <!-- Add other product details as needed -->
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 and not forloop.last %}
+            </div><div class="row">
+        {% endif %}
+    {% endfor %}
+</div>
+<br>
+<hr>
+<br>
+<div class="row">
+    <h2 class="display-6">{{request.user}} Your Selected Product</h2>
+    {% for selectproduct in selectproduct %}
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <a href="{% url 'product-detail' selectproduct.product.id %}"><img src="{{selectproduct.product.product_image_frontside.url}}" class="card-img-top" alt="{{ selectproduct.product.title }}"></a><h5 class="card-title">{{ selectproduct.product.title }}</h5>
+                <div class="card-body">
+                    <p class="card-text">RS. {{ selectproduct.product.discount_price }}</p>
+                    <p class="card-text">Upload At: {{ selectproduct.product.upload_date }}</p>
+                    <!-- Add other product details as needed -->
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 and not forloop.last %}
+            </div><div class="row">
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+
+
