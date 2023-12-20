@@ -3,7 +3,10 @@ from app import views
 from django.contrib.auth import views as auth_views
 from .forms import LoginForm,MyPasswordChangeForm, MyPasswordResetForm,MySetPasswordForm
 urlpatterns = [
+    
     path('', views.ProductView.as_view(),name='home'),
+
+
     path('tool/',views.ToolView.as_view(),name = 'toolpage'),
     path('furniture/',views.FurnitureView.as_view(),name = 'furniturepage'),
     path('art/',views.ArtView.as_view(),name = 'artpage'),
@@ -24,6 +27,8 @@ urlpatterns = [
     path('automotive/',views.AutomotiveView.as_view(),name = 'automotivepage'),
     path('kitchen/',views.KitchenView.as_view(),name = 'kitchenpage'),
     path('groceries/',views.GroceriesView.as_view(),name = 'groceriespage'),
+
+
     path('product-detail/<int:pk>', views.product_detail.as_view(), name='product-detail'),
     path('add-to-cart/', views.add_to_cart, name='add-to-cart'),
     path('cart/', views.ShowCart, name='showcart'),
@@ -34,6 +39,8 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('address/', views.address, name='address'),
     path('orders/', views.orders, name='orders'),
+
+
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html',authentication_form=LoginForm), name='login'),
     path('logout', views.LogoutView, name = 'logout'),
     path('passwordchange/', auth_views.PasswordChangeView.as_view(template_name='app/passwordchange.html',form_class=MyPasswordChangeForm, success_url='/passwordchangedone/'), name='pc'),
@@ -43,8 +50,10 @@ urlpatterns = [
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='app/password_reset_confirm.html',form_class = MySetPasswordForm), name='password_reset_confirm'),
     path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='app/password_reset_complete.html'), name='password_reset_complete'),
     path('registration/', views.customerregistrationform.as_view(), name='customerregistration'),
+
     path('checkout/', views.checkout, name='checkout'),
     path('paymentdone/', views.PaymentDoneView,name='paymentdone'),
     path('productupload/', views.ProductUploadView.as_view(), name = 'productuploadpage'),
+
     path('search/', views.product_search, name='product_search'),
 ]
